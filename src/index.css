@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  font-family: 'Space Grotesk', sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  color: #0f1b2d;
+  background-color: #f7f1e9;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+
+  --ink: #0f1b2d;
+  --muted: #4c5565;
+  --accent: #f15a24;
+  --accent-2: #2b6cb0;
+  --card: rgba(255, 255, 255, 0.78);
+  --shadow: 0 20px 60px rgba(15, 27, 45, 0.12);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(255, 232, 214, 0.8), transparent 55%),
+    radial-gradient(circle at 20% 80%, rgba(224, 240, 255, 0.8), transparent 60%),
+    #f7f1e9;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Fraunces', serif;
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+}
+
+.reveal {
+  animation: rise 0.8s ease both;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
