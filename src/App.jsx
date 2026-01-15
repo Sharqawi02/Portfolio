@@ -1,62 +1,75 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 import './App.css'
+import schedularImage from './assets/images/Schedular.png'
+import curaQuizImage from './assets/images/Cura Quiz.png'
+import cloudoImage from './assets/images/Cloudo.png'
 
 const workExperience = [
   {
-    role: 'Praktik – Cloudo-AB',
-    period: '18 september 2025 – 18 januari 2026',
-    imageLabel: 'Plats för bild från deras hemsida',
+    role: 'Internship - Cloudo-AB',
+    period: 'September 18, 2025 - January 18, 2026',
+    image: cloudoImage,
+    imageAlt: 'Cloudo-AB internship website',
+    link: 'https://cloudo.se/',
+    tags: [
+      'WordPress',
+      'HTML',
+      'CSS',
+      'Microsoft Clarity',
+      'Google Analytics',
+      'Power Automate',
+    ],
     bullets: [
-      'Fyra månader praktik inom IT-branschen som del av utbildningen.',
-      'Arbetade självständigt med WordPress och vidareutvecklade företagets webbplats.',
-      'Fokus på användarupplevelse, innehåll och informationsstruktur.',
+      'Four-month internship in the IT industry as part of my studies.',
+      'Worked independently with WordPress and further developed the company website.',
+      'Focused on user experience, content, and information structure.',
     ],
   },
   {
-    role: 'Terminalarbetare – Schenker (via StudentConsulting Bemanning)',
-    period: '11 mars 2024 – pågående',
+    role: 'Terminal Worker - Schenker (via StudentConsulting Staffing)',
+    period: 'March 11, 2024 - present',
     bullets: [
-      'Sorterade och hanterade inkommande och utgående paket och gods (t.ex. från Amazon, Adlibris och Shein).',
-      'Lastade och lossade lastbilar och containrar samt registrerade försändelser i logistiksystem.',
-      'Samarbetade med kollegor för att effektivisera arbetsflödet och nå dagliga mål.',
-      'Bidrog till ökad effektivitet genom noggrann kontroll och spårning av paket.',
-      'Avslutade anställningen för att kunna fokusera bättre på studier (om detta stämmer tidsmässigt).',
+      'Sorted and handled incoming and outgoing parcels and freight (e.g. from Amazon, Adlibris, and Shein).',
+      'Loaded and unloaded trucks and containers and registered shipments in the logistics system.',
+      'Collaborated with colleagues to streamline workflow and meet daily goals.',
+      'Contributed to improved efficiency through careful control and tracking of parcels.',
+      'Left the role to focus more on studies (if the timeline fits).',
     ],
   },
   {
-    role: 'Lagerarbetare & Chaufför – Airmee',
-    period: 'Juli 2022 – november 2023',
+    role: 'Warehouse Worker & Driver - Airmee',
+    period: 'July 2022 - November 2023',
     bullets: [
-      'Sorterade paket och gods samt levererade försändelser till kunder.',
-      'Arbetade i team för att säkerställa korrekt sortering och effektiv distribution.',
-      'Lärde mig snabbt nya system och rutiner, vilket bidrog till bättre flöde i verksamheten.',
+      'Sorted parcels and freight and delivered shipments to customers.',
+      'Worked in a team to ensure accurate sorting and efficient distribution.',
+      'Quickly learned new systems and routines, improving operational flow.',
     ],
   },
 ]
 
 const education = [
   {
-    title: 'Informationsarkitekt – Malmö universitet',
-    period: '2023 – pågående',
+    title: 'Information Architecture - Malmo University',
+    period: '2023 - present',
     bullets: [
-      'Studier inom informationsarkitektur med fokus på webbutveckling, backend-programmering, databasteknik, UX/UI, informationssäkerhet, projektledning och forskningsmetodik.',
-      'Arbetat praktiskt med databaser (MySQL och PostgreSQL) i samtliga projekt, inklusive egen SQL-utveckling (queries, relationshantering) samt integration av databaser i webbapplikationer.',
-      'Utvecklat responsiva webbapplikationer med HTML, CSS och React, med fokus på struktur, användbarhet och tillgänglighet. Samtliga projekt är versionshanterade och publicerade via GitHub.',
-      'Arbetat med backend-utveckling i Python och Node.js, främst med Flask, samt utveckling och användning av API:er (REST, JSON) i majoriteten av projekten.',
-      'Studerat och tillämpat objektorienterad programmering (OOP) i projektbaserade uppgifter.',
-      'Arbetat med UX- och UI-design med hjälp av Figma, inklusive wireframes, prototyper, personas, användarresor och usability testing.',
-      'Fördjupning inom informationssäkerhet, inklusive riskanalys, hotmodellering, förståelse för olika angreppsnivåer samt hur dessa kan förebyggas och hanteras.',
-      'Studerat forskningsmetodik med både kvalitativa och kvantitativa metoder, inklusive genomförande av rapport baserad på enkäter och intervjuer.',
-      'Erfarenhet av agilt arbete enligt Scrum, där jag haft ansvar för projektplanering och implementation i grupprojekt.',
-      'Tillämpade kunskaper inom UX/UI, informationsarkitektur och webbutveckling i en professionell miljö.',
-      'Parallellt med praktiken deltog jag i ett skolprojekt med en extern, verklig kund, där vi utvecklade en IT-lösning baserad på kundens krav.',
-      'Arbetade med kravinsamling, planering, implementation och presentation av lösningen samt kontinuerlig dialog och feedback från kund.',
+      'Studies in information architecture with focus on web development, backend programming, database technology, UX/UI, information security, project management, and research methods.',
+      'Hands-on work with databases (MySQL and PostgreSQL) in all projects, including SQL development (queries, relationship management) and database integration in web apps.',
+      'Built responsive web applications with HTML, CSS, and React, focusing on structure, usability, and accessibility. All projects are version-controlled and published via GitHub.',
+      'Backend development in Python and Node.js, mainly with Flask, and API development and usage (REST, JSON) in most projects.',
+      'Studied and applied object-oriented programming (OOP) in project-based assignments.',
+      'Worked with UX and UI design in Figma, including wireframes, prototypes, personas, user journeys, and usability testing.',
+      'Focused studies in information security, including risk analysis, threat modeling, understanding attack vectors, and prevention/mitigation.',
+      'Studied research methods using both qualitative and quantitative approaches, including a report based on surveys and interviews.',
+      'Experience with agile work using Scrum, with responsibility for project planning and implementation in group projects.',
+      'Applied UX/UI, information architecture, and web development skills in a professional environment.',
+      'Alongside the internship, participated in a school project with an external real-world client, developing an IT solution based on their requirements.',
+      'Worked on requirements gathering, planning, implementation, and presentation of the solution with ongoing client dialogue and feedback.',
     ],
   },
   {
-    title: 'Teknikprogrammet, inriktning information & media – NTI Gymnasiet, Malmö',
-    period: '2020 – 2023',
-    bullets: ['Fördjupning inom programmering, media och IT-relaterade ämnen.'],
+    title: 'Technology Program, focus on Information & Media - NTI Gymnasiet, Malmo',
+    period: '2020 - 2023',
+    bullets: ['Specialization in programming, media, and IT-related subjects.'],
   },
 ]
 
@@ -64,87 +77,93 @@ const projects = [
   {
     title: 'Schedular',
     description:
-      'En kalenderapp inspirerad av Google Kalender. Fokus på planering, smarta påminnelser och en ren UX för vardagen.',
-    tags: ['React', 'Node', 'PostgreSQL'],
+      'A calendar app inspired by Google Calendar. Focus on planning, smart reminders, and a clean UX for everyday use.',
+    image: schedularImage,
+    imageAlt: 'Schedular calendar app UI',
+    tags: ['HTML', 'CSS', 'Python', 'React', 'API', 'PostgreSQL'],
   },
   {
-    title: 'Projekt (lägg till titel)',
-    description: 'Beskriv kort projektet och tekniken du använde.',
-    tags: ['Teknik'],
-  },
-  {
-    title: 'Projekt (lägg till titel)',
-    description: 'Beskriv kort projektet och tekniken du använde.',
-    tags: ['Teknik'],
+    title: 'Cura Quiz',
+    description: 'Interactive quiz experience focused on clarity, flow, and usability.',
+    image: curaQuizImage,
+    imageAlt: 'Cura Quiz interface preview',
+    link: 'https://www.cura-quiz.se/',
+    tags: ['Chakra UI', 'React', 'HTML', 'CSS', 'API', 'PostgreSQL', 'JavaScript (backend)'],
   },
 ]
 
 const skillGroups = [
   {
-    title: 'Programmering & Webbutveckling',
+    title: 'Programming & Web Development',
     items: [
-      'HTML & CSS – Responsiv webbutveckling (Flexbox, Grid), semantisk struktur och tillgänglighet',
-      'JavaScript – Interaktiv frontend och arbete med API:er',
-      'React – Komponentbaserad utveckling, state-hantering och projektbaserat arbete',
-      'Python – Backend-utveckling och objektorienterad programmering (OOP)',
-      'Node.js – Backend-logik och serverbaserade lösningar',
-      'Flask – Utveckling av backend och REST-API:er',
+      'HTML & CSS - Responsive web development (Flexbox, Grid), semantic structure, and accessibility',
+      'JavaScript - Interactive frontend and working with APIs',
+      'React - Component-based development, state management, and project work',
+      'Python - Backend development and object-oriented programming (OOP)',
+      'Node.js - Backend logic and server-side solutions',
+      'Flask - Backend development and REST APIs',
     ],
   },
   {
-    title: 'Databaser',
+    title: 'Databases',
     items: [
-      'MySQL & PostgreSQL – Datamodellering, relationsdatabaser och SQL (CRUD, JOIN, queries)',
-      'Integration av databaser i webbapplikationer',
+      'MySQL & PostgreSQL - Data modeling, relational databases, and SQL (CRUD, JOIN, queries)',
+      'Database integration in web applications',
     ],
   },
   {
     title: 'UX / UI & Design',
     items: [
-      'Figma – Wireframes, prototyper, UI-design',
-      'UX-metoder – Personas, användarresor, usability testing och användartester',
-      'Informationsarkitektur och strukturering av innehåll',
+      'Figma - Wireframes, prototypes, UI design',
+      'UX methods - Personas, user journeys, usability testing, and user tests',
+      'Information architecture and content structuring',
     ],
   },
   {
-    title: 'Verktyg & Arbetssätt',
+    title: 'Tools & Ways of Working',
     items: [
-      'Git & GitHub – Versionshantering av samtliga skolprojekt',
-      'Agilt arbetssätt (Scrum) – Planering, sprintar och implementation i team',
-      'WordPress – Vidareutveckling och omstrukturering av webbplatser',
+      'Git & GitHub - Version control for all school projects',
+      'Agile (Scrum) - Planning, sprints, and team implementation',
+      'WordPress - Further development and restructuring of websites',
     ],
   },
   {
-    title: 'Informationssäkerhet',
-    items: ['Grundläggande förståelse för riskanalys, hotmodellering och säker hantering av system'],
+    title: 'Information Security',
+    items: ['Basic understanding of risk analysis, threat modeling, and secure handling of systems'],
   },
   {
-    title: 'Språk',
-    items: ['Svenska – Flytande', 'Engelska – Goda kunskaper', 'Arabiska – Modersmål'],
+    title: 'Languages',
+    items: ['Swedish - Fluent', 'English - Professional working proficiency', 'Arabic - Native'],
   },
   {
-    title: 'Övrigt',
-    items: ['B-körkort (manuell), vana av logistik- och lagersystem'],
+    title: 'Other',
+    items: ["Driver's license (manual), familiar with logistics and warehouse systems"],
   },
 ]
 
 const hobbies = [
-  'Programmering & teknik – Utvecklar gärna egna små projekt för att lära mig nya språk och ramverk.',
-  'Träning & hälsa – Gymmar regelbundet och värdesätter en aktiv livsstil.',
+  'Programming & tech - Enjoy building small projects to learn new languages and frameworks.',
+  'Training & health - Work out regularly and value an active lifestyle.',
 ]
 
 const references = [
   {
     company: 'StudentConsulting (Schenker)',
-    contact: 'Kontakt: Robert Nilsson, Kundansvarig',
-    phone: 'Telefon: +46 72-726 97 38',
-    email: 'E-post: robert.nilsson@studentconsulting.com',
+    contact: 'Contact: Robert Nilsson, Account Manager',
+    phone: 'Phone: +46 72-726 97 38',
+    email: 'Email: robert.nilsson@studentconsulting.com',
   },
   {
     company: 'Airmee',
-    contact: 'Kontakt: Kemalettin Demirbas',
-    phone: 'Telefon: +46 73-713 18 34',
-    email: 'E-post: kemalettin.demirbas@airmee.com',
+    contact: 'Contact: Kemalettin Demirbas',
+    phone: 'Phone: +46 73-713 18 34',
+    email: 'Email: kemalettin.demirbas@airmee.com',
+  },
+  {
+    company: 'Cloudo AB',
+    contact: 'Contact: Christofer Boatright',
+    phone: 'Phone: +46 73-070 43 13',
+    email: 'Email: christofer.boatright@cloudo.se',
   },
 ]
 
@@ -165,7 +184,7 @@ function App() {
             type="button"
             aria-expanded={menuOpen}
             aria-controls="site-nav"
-            aria-label="Öppna meny"
+            aria-label="Open menu"
             onClick={() => setMenuOpen((open) => !open)}
           >
             <span />
@@ -176,32 +195,32 @@ function App() {
         <div className={`nav-wrap ${menuOpen ? 'open' : ''}`}>
           <nav className="nav" id="site-nav">
             <a href="#home" onClick={handleNavClick}>
-              Hem
+              Home
             </a>
             <a href="#about" onClick={handleNavClick}>
-              Om mig
+              About
             </a>
             <a href="#experience" onClick={handleNavClick}>
-              Erfarenhet
+              Experience
             </a>
             <a href="#education" onClick={handleNavClick}>
-              Utbildning
+              Education
             </a>
             <a href="#projects" onClick={handleNavClick}>
-              Projekt
+              Projects
             </a>
             <a href="#skills" onClick={handleNavClick}>
-              Kompetens
+              Skills
             </a>
             <a href="#references" onClick={handleNavClick}>
-              Referenser
+              References
             </a>
             <a href="#contact" onClick={handleNavClick}>
-              Kontakt
+              Contact
             </a>
           </nav>
           <a className="cta" href="mailto:amjadsharqawi20@gmail.com" onClick={handleNavClick}>
-            Skicka mejl
+            Send email
           </a>
         </div>
       </header>
@@ -210,52 +229,52 @@ function App() {
         <section id="home" className="hero">
           <div className="hero-content">
             <p className="eyebrow reveal" style={{ '--delay': '0.1s' }}>
-              Informationsarkitekturstudent
+              Information architecture student
             </p>
             <h1 className="reveal" style={{ '--delay': '0.2s' }}>
               Amjad Sharqawi
             </h1>
             <p className="lead reveal" style={{ '--delay': '0.3s' }}>
-              Engagerad tredjeårsstudent inom informationsarkitektur på Malmö universitet, med
-              målet att bli fullstackutvecklare. Jag söker både extrajobb och heltidstjänster för att
-              vidareutveckla mina praktiska färdigheter.
+              Engaged third-year information architecture student at Malmo University, aiming to
+              become a full-stack developer. I am seeking both part-time and full-time roles to
+              grow my practical skills.
             </p>
             <div className="hero-actions reveal" style={{ '--delay': '0.4s' }}>
               <a className="button primary" href="mailto:amjadsharqawi20@gmail.com">
-                Skicka mejl
+                Send email
               </a>
               <a className="button ghost" href="tel:0700215351">
-                Ring mig
+                Call me
               </a>
             </div>
             <div className="hero-metrics reveal" style={{ '--delay': '0.5s' }}>
               <div>
                 <span className="metric">amjadsharqawi20@gmail.com</span>
-                <span className="metric-label">E-post</span>
+                <span className="metric-label">Email</span>
               </div>
               <div>
                 <span className="metric">070-021 53 51</span>
-                <span className="metric-label">Telefon</span>
+                <span className="metric-label">Phone</span>
               </div>
               <div>
-                <span className="metric">Limhamn, Malmö</span>
-                <span className="metric-label">Plats</span>
+                <span className="metric">Limhamn, Malmo</span>
+                <span className="metric-label">Location</span>
               </div>
             </div>
           </div>
           <div className="hero-card reveal" style={{ '--delay': '0.4s' }}>
-            <div className="portrait-placeholder" aria-label="Plats för profilbild">
-              Lägg till bild här
+            <div className="portrait-placeholder" aria-label="Profile photo placeholder">
+              Add image here
             </div>
             <div className="hero-card-body">
-              <h3>Snabbprofil</h3>
+              <h3>Quick profile</h3>
               <p>
-                Flexibel, noggrann och punktlig. Jag trivs med att arbeta både i team och
-                självständigt och söker roller där jag kan växa praktiskt.
+                Flexible, detail-oriented, and punctual. I thrive both in teams and independently
+                and look for roles where I can grow in practice.
               </p>
               <div className="chip-row">
-                <span>Fullstackmål</span>
-                <span>Agilt</span>
+                <span>Full-stack goal</span>
+                <span>Agile</span>
                 <span>UX/UI</span>
               </div>
             </div>
@@ -264,23 +283,23 @@ function App() {
 
         <section id="about" className="about">
           <div className="section-title">
-            <p className="eyebrow">Om mig</p>
-            <h2>Engagerad student med fokus på praktiska färdigheter.</h2>
+            <p className="eyebrow">About me</p>
+            <h2>Engaged student focused on practical skills.</h2>
           </div>
           <div className="about-grid">
             <div className="about-card">
               <p>
-                Jag söker både extrajobb och heltidstjänster för att vidareutveckla mina praktiska
-                färdigheter. Som person är jag flexibel, noggrann och punktlig, och trivs med att
-                jobba såväl i team som självständigt.
+                I am seeking both part-time and full-time roles to develop my practical skills.
+                As a person, I am flexible, detail-oriented, and punctual, and I enjoy working both
+                in teams and independently.
               </p>
             </div>
             <div className="about-card accent">
-              <h3>Fokusområden</h3>
+              <h3>Focus areas</h3>
               <ul>
-                <li>Fullstackutveckling och webbapplikationer.</li>
-                <li>Struktur, användbarhet och tillgänglighet.</li>
-                <li>Professionell dialog och kontinuerlig feedback.</li>
+                <li>Full-stack development and web applications.</li>
+                <li>Structure, usability, and accessibility.</li>
+                <li>Professional dialogue and continuous feedback.</li>
               </ul>
             </div>
           </div>
@@ -288,16 +307,30 @@ function App() {
 
         <section id="experience" className="timeline">
           <div className="section-title">
-            <p className="eyebrow">Arbetslivserfarenhet</p>
-            <h2>Arbetslivserfarenhet.</h2>
+            <p className="eyebrow">Work experience</p>
+            <h2>Work experience.</h2>
           </div>
           <div className="timeline-grid">
             {workExperience.map((role) => (
               <div className="timeline-card" key={role.role}>
                 <div className="timeline-year">{role.period}</div>
                 <h3>{role.role}</h3>
-                {role.imageLabel ? (
+                {role.link ? (
+                  <a className="text-link" href={role.link} target="_blank" rel="noreferrer">
+                    Visit website
+                  </a>
+                ) : null}
+                {role.image ? (
+                  <img className="timeline-image" src={role.image} alt={role.imageAlt} />
+                ) : role.imageLabel ? (
                   <div className="timeline-image placeholder">{role.imageLabel}</div>
+                ) : null}
+                {role.tags ? (
+                  <div className="timeline-tags">
+                    {role.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
                 ) : null}
                 <ul>
                   {role.bullets.map((bullet) => (
@@ -311,8 +344,8 @@ function App() {
 
         <section id="education" className="projects">
           <div className="section-title">
-            <p className="eyebrow">Utbildning</p>
-            <h2>Utbildning.</h2>
+            <p className="eyebrow">Education</p>
+            <h2>Education.</h2>
           </div>
           <div className="project-grid">
             {education.map((item) => (
@@ -333,16 +366,29 @@ function App() {
 
         <section id="projects" className="projects">
           <div className="section-title">
-            <p className="eyebrow">Projekt</p>
-            <h2>Projekt jag har arbetat med.</h2>
+            <p className="eyebrow">Projects</p>
+            <h2>Projects I have worked on.</h2>
           </div>
           <div className="project-grid">
             {projects.map((project) => (
               <article className="project-card" key={project.title}>
-                <div className="project-image placeholder">Bild kommer</div>
+                {project.image ? (
+                  <img
+                    className="project-image"
+                    src={project.image}
+                    alt={project.imageAlt}
+                  />
+                ) : (
+                  <div className="project-image placeholder">Image coming soon</div>
+                )}
                 <div className="project-body">
                   <h3>{project.title}</h3>
                   <p>{project.description}</p>
+                  {project.link ? (
+                    <a className="text-link" href={project.link} target="_blank" rel="noreferrer">
+                      Visit website
+                    </a>
+                  ) : null}
                   <div className="project-tags">
                     {project.tags.map((tag) => (
                       <span key={tag}>{tag}</span>
@@ -356,8 +402,8 @@ function App() {
 
         <section id="skills" className="skills">
           <div className="section-title">
-            <p className="eyebrow">Kompetens</p>
-            <h2>Kompetenser och verktyg.</h2>
+            <p className="eyebrow">Skills</p>
+            <h2>Skills and tools.</h2>
           </div>
           <div className="skills-grid">
             {skillGroups.map((skill) => (
@@ -375,8 +421,8 @@ function App() {
 
         <section id="references" className="about">
           <div className="section-title">
-            <p className="eyebrow">Referenser</p>
-            <h2>Referenser.</h2>
+            <p className="eyebrow">References</p>
+            <h2>References.</h2>
           </div>
           <div className="about-grid">
             {references.map((reference) => (
@@ -392,8 +438,8 @@ function App() {
 
         <section className="about">
           <div className="section-title">
-            <p className="eyebrow">Intressen</p>
-            <h2>Intressen.</h2>
+            <p className="eyebrow">Interests</p>
+            <h2>Interests.</h2>
           </div>
           <div className="about-grid">
             {hobbies.map((hobby) => (
@@ -407,20 +453,20 @@ function App() {
         <section id="contact" className="contact">
           <div className="contact-card">
             <div>
-              <p className="eyebrow">Kontakt</p>
-              <h2>Hör gärna av dig.</h2>
+              <p className="eyebrow">Contact</p>
+              <h2>Feel free to reach out.</h2>
               <p className="lead">
-                E-post: amjadsharqawi20@gmail.com<br />
-                Telefon: 070-021 53 51<br />
-                Plats: Limhamn, Malmö
+                Email: amjadsharqawi20@gmail.com<br />
+                Phone: 070-021 53 51<br />
+                Location: Limhamn, Malmo
               </p>
             </div>
             <div className="contact-actions">
               <a className="button primary" href="mailto:amjadsharqawi20@gmail.com">
-                Skicka mejl
+                Send email
               </a>
               <a className="button ghost" href="tel:0700215351">
-                Ring mig
+                Call me
               </a>
             </div>
           </div>
@@ -428,10 +474,14 @@ function App() {
       </main>
 
       <footer className="site-footer">
-        <p>(c) 2024 Amjad Sharqawi. Alla rättigheter förbehållna.</p>
+        <p>(c) 2024 Amjad Sharqawi. All rights reserved.</p>
       </footer>
     </div>
   )
 }
 
 export default App
+
+
+
+
