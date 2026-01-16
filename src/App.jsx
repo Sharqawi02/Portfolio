@@ -3,6 +3,7 @@ import './App.css'
 import schedularImage from './assets/images/Schedular.png'
 import curaQuizImage from './assets/images/Cura Quiz.png'
 import cloudoImage from './assets/images/Cloudo.png'
+import profileImage from './assets/images/My.jpeg'
 
 const workExperience = [
   {
@@ -263,8 +264,8 @@ function App() {
             </div>
           </div>
           <div className="hero-card reveal" style={{ '--delay': '0.4s' }}>
-            <div className="portrait-placeholder" aria-label="Profile photo placeholder">
-              Add image here
+            <div className="portrait-wrap">
+              <img src={profileImage} alt="Portrait of Amjad Sharqawi" />
             </div>
             <div className="hero-card-body">
               <h3>Quick profile</h3>
@@ -481,7 +482,6 @@ function App() {
 }
 
 export default App
-
 
 
 
