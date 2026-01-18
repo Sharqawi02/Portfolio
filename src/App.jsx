@@ -67,11 +67,6 @@ const education = [
       'Worked on requirements gathering, planning, implementation, and presentation of the solution with ongoing client dialogue and feedback.',
     ],
   },
-  {
-    title: 'Technology Program, focus on Information & Media - NTI Gymnasiet, Malmo',
-    period: '2020 - 2023',
-    bullets: ['Specialization in programming, media, and IT-related subjects.'],
-  },
 ]
 
 const projects = [
@@ -179,7 +174,41 @@ function App() {
     <div className={`page ${menuOpen ? 'menu-open' : ''}`}>
       <header className="site-header">
         <div className="header-row">
-          <div className="brand">Amjad Sharqawi</div>
+          <div className="social-links" aria-label="Social links">
+            <a
+              className="social-link"
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+            >
+              <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                <path d="M20.45 20.45h-3.56v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85v5.5H9.45V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.62 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.44a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45z" />
+              </svg>
+            </a>
+            <a
+              className="social-link"
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+            >
+              <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                <path d="M12 7.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4zm0 7.75a3.05 3.05 0 1 1 0-6.1 3.05 3.05 0 0 1 0 6.1zm6.06-7.94a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM20.5 12c0-1.53.01-3.05-.07-4.58-.08-1.52-.42-2.87-1.53-3.98-1.1-1.1-2.46-1.45-3.98-1.53C13.4 1.83 11.87 1.84 10.35 1.92c-1.52.08-2.87.42-3.98 1.53-1.1 1.1-1.45 2.46-1.53 3.98C4.76 8.95 4.77 10.47 4.77 12s-.01 3.05.07 4.58c.08 1.52.42 2.87 1.53 3.98 1.1 1.1 2.46 1.45 3.98 1.53 1.52.08 3.05.07 4.58.07s3.05.01 4.58-.07c1.52-.08 2.87-.42 3.98-1.53 1.1-1.1 1.45-2.46 1.53-3.98.08-1.52.07-3.05.07-4.58zm-1.8 6.02a3.26 3.26 0 0 1-1.83 1.83c-1.27.5-4.29.38-4.87.38s-3.6.12-4.87-.38a3.26 3.26 0 0 1-1.83-1.83c-.5-1.27-.38-4.29-.38-4.87s-.12-3.6.38-4.87a3.26 3.26 0 0 1 1.83-1.83c1.27-.5 4.29-.38 4.87-.38s3.6-.12 4.87.38a3.26 3.26 0 0 1 1.83 1.83c.5 1.27.38 4.29.38 4.87s.12 3.6-.38 4.87z" />
+              </svg>
+            </a>
+            <a
+              className="social-link"
+              href="https://github.com/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub"
+            >
+              <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                <path d="M12 2.2a9.8 9.8 0 0 0-3.1 19.1c.49.1.67-.22.67-.48v-1.68c-2.73.6-3.3-1.2-3.3-1.2-.45-1.14-1.1-1.44-1.1-1.44-.9-.62.07-.6.07-.6 1 .07 1.53 1.04 1.53 1.04.9 1.52 2.36 1.08 2.94.83.1-.66.35-1.08.64-1.33-2.18-.25-4.47-1.1-4.47-4.88 0-1.07.38-1.95 1.02-2.64-.1-.26-.45-1.28.1-2.67 0 0 .83-.27 2.72 1.02a9.3 9.3 0 0 1 4.96 0c1.88-1.3 2.71-1.02 2.71-1.02.55 1.4.2 2.42.1 2.67.63.69 1.02 1.57 1.02 2.64 0 3.79-2.3 4.63-4.5 4.87.36.3.68.92.68 1.86v2.76c0 .26.18.59.68.48A9.8 9.8 0 0 0 12 2.2z" />
+              </svg>
+            </a>
+          </div>
           <button
             className="menu-toggle"
             type="button"
