@@ -1,594 +1,516 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
-import * as THREE from 'three'
+import { useState } from 'react'
 import './App.css'
-import portraitImg from './assets/images/My.jpeg'
-import schedularImg from './assets/images/Schedular.png'
-import curaImg from './assets/images/Cura Quiz.png'
-import cloudoImg from './assets/images/Cloudo.png'
+import schedularImage from './assets/images/Schedular.png'
+import curaQuizImage from './assets/images/Cura Quiz.png'
+import cloudoImage from './assets/images/Cloudo.png'
+import profileImage from './assets/images/My.jpeg'
 
-const CONTACT_EMAIL = 'amjadsharqawi20@gmail.com'
-const CONTACT_PHONE = '070-021 53 51'
-const CONTACT_PHONE_LINK = '0700215351'
-const CONTACT_LOCATION = 'Limhamn, Malmo'
-
-const sections = [
+const workExperience = [
   {
-    id: 'home',
-    title: 'Amjad Sharqawi',
-    navLabel: 'Home',
-    subtitle: 'Information architecture student',
-    lines: [
-      'Focused on full-stack development with a strong foundation in UX and information structure.',
-      'Open to part-time and full-time roles while finishing my studies.',
+    role: 'Internship - Cloudo-AB',
+    period: 'September 18, 2025 - January 18, 2026',
+    image: cloudoImage,
+    imageAlt: 'Cloudo-AB internship website',
+    link: 'https://cloudo.se/',
+    tags: [
+      'WordPress',
+      'HTML',
+      'CSS',
+      'Microsoft Clarity',
+      'Google Analytics',
+      'Power Automate',
+    ],
+    bullets: [
+      'Four-month internship in the IT industry as part of my studies.',
+      'Worked independently with WordPress and further developed the company website.',
+      'Focused on user experience, content, and information structure.',
     ],
   },
   {
-    id: 'about',
-    title: 'About',
-    navLabel: 'About',
-    subtitle: 'Engaged, practical, collaborative',
-    lines: [
-      'Flexible, detail-oriented, and punctual.',
-      'Comfortable working independently or in teams.',
-      'Strong focus on usability and clear information flow.',
+    role: 'Terminal Worker - Schenker (via StudentConsulting Staffing)',
+    period: 'March 11, 2024 - present',
+    bullets: [
+      'Sorted and handled incoming and outgoing parcels and freight (e.g. from Amazon, Adlibris, and Shein).',
+      'Loaded and unloaded trucks and containers and registered shipments in the logistics system.',
+      'Collaborated with colleagues to streamline workflow and meet daily goals.',
+      'Contributed to improved efficiency through careful control and tracking of parcels.',
+      'Left the role to focus more on studies (if the timeline fits).',
     ],
   },
   {
-    id: 'experience',
-    title: 'Experience',
-    navLabel: 'Experience',
-    subtitle: 'Work experience',
-    lines: [
-      'Internship - Cloudo-AB (Sep 2025 - Jan 2026).',
-      'Terminal Worker - Schenker (Mar 2024 - present).',
-      'Warehouse Worker & Driver - Airmee (Jul 2022 - Nov 2023).',
+    role: 'Warehouse Worker & Driver - Airmee',
+    period: 'July 2022 - November 2023',
+    bullets: [
+      'Sorted parcels and freight and delivered shipments to customers.',
+      'Worked in a team to ensure accurate sorting and efficient distribution.',
+      'Quickly learned new systems and routines, improving operational flow.',
     ],
-  },
-  {
-    id: 'education',
-    title: 'Education',
-    navLabel: 'Education',
-    subtitle: 'Malmo University',
-    lines: [
-      'Information Architecture (2023 - present).',
-      'Web development, backend, databases, UX/UI, and security.',
-      'Agile project work and client collaboration.',
-    ],
-  },
-  {
-    id: 'projects',
-    title: 'Projects',
-    navLabel: 'Projects',
-    subtitle: 'Selected work',
-    lines: [
-      'Schedular: calendar planning app inspired by Google Calendar.',
-      'Cura Quiz: interactive quiz with a clean, accessible flow.',
-      'RAG Explorer: Google embeddings with Flash 2.5 light for retrieval-augmented answers.',
-    ],
-  },
-  {
-    id: 'skills',
-    title: 'Skills',
-    navLabel: 'Skills',
-    subtitle: 'Core stack',
-    lines: [
-      'React, HTML/CSS, JavaScript, Python, Node.js, Flask.',
-      'PostgreSQL + MySQL, REST APIs, UX/UI in Figma.',
-      'RAG architecture, vector search, and evaluation workflows.',
-      'Information architecture and content structuring.',
-    ],
-  },
-  {
-    id: 'references',
-    title: 'References',
-    navLabel: 'References',
-    subtitle: 'Professional references',
-    lines: [
-      'StudentConsulting: Robert Nilsson.',
-      'Airmee: Kemalettin Demirbas.',
-      'Cloudo AB: Christofer Boatright.',
-    ],
-  },
-  {
-    id: 'contact',
-    title: 'Contact',
-    navLabel: 'Contact',
-    subtitle: 'Let us talk',
-    lines: [`Email: ${CONTACT_EMAIL}`, `Phone: ${CONTACT_PHONE}`, CONTACT_LOCATION],
   },
 ]
 
-const imageSlides = [
-  { src: portraitImg, label: 'Portrait', sections: ['home', 'about'] },
-  { src: cloudoImg, label: 'Cloudo', sections: ['experience'] },
-  { src: schedularImg, label: 'Schedular', sections: ['projects'] },
-  { src: curaImg, label: 'Cura Quiz', sections: ['projects'] },
-  { src: portraitImg, label: 'Portrait', sections: ['education', 'skills', 'references', 'contact'] },
+const education = [
+  {
+    title: 'Information Architecture - Malmo University',
+    period: '2023 - present',
+    bullets: [
+      'Studies in information architecture with focus on web development, backend programming, database technology, UX/UI, information security, project management, and research methods.',
+      'Hands-on work with databases (MySQL and PostgreSQL) in all projects, including SQL development (queries, relationship management) and database integration in web apps.',
+      'Built responsive web applications with HTML, CSS, and React, focusing on structure, usability, and accessibility. All projects are version-controlled and published via GitHub.',
+      'Backend development in Python and Node.js, mainly with Flask, and API development and usage (REST, JSON) in most projects.',
+      'Studied and applied object-oriented programming (OOP) in project-based assignments.',
+      'Worked with UX and UI design in Figma, including wireframes, prototypes, personas, user journeys, and usability testing.',
+      'Focused studies in information security, including risk analysis, threat modeling, understanding attack vectors, and prevention/mitigation.',
+      'Studied research methods using both qualitative and quantitative approaches, including a report based on surveys and interviews.',
+      'Experience with agile work using Scrum, with responsibility for project planning and implementation in group projects.',
+      'Applied UX/UI, information architecture, and web development skills in a professional environment.',
+      'Alongside the internship, participated in a school project with an external real-world client, developing an IT solution based on their requirements.',
+      'Worked on requirements gathering, planning, implementation, and presentation of the solution with ongoing client dialogue and feedback.',
+    ],
+  },
 ]
 
-const clamp = (value, min, max) => Math.min(Math.max(value, min), max)
+const projects = [
+  {
+    title: 'Schedular',
+    description:
+      'A calendar app inspired by Google Calendar. Focus on planning, smart reminders, and a clean UX for everyday use.',
+    image: schedularImage,
+    imageAlt: 'Schedular calendar app UI',
+    tags: ['HTML', 'CSS', 'Python', 'React', 'API', 'PostgreSQL'],
+  },
+  {
+    title: 'Cura Quiz',
+    description: 'Interactive quiz experience focused on clarity, flow, and usability.',
+    image: curaQuizImage,
+    imageAlt: 'Cura Quiz interface preview',
+    link: 'https://www.cura-quiz.se/',
+    tags: ['Chakra UI', 'React', 'HTML', 'CSS', 'API', 'PostgreSQL', 'JavaScript (backend)'],
+  },
+]
 
-const createGlowTexture = () => {
-  const size = 128
-  const canvas = document.createElement('canvas')
-  canvas.width = size
-  canvas.height = size
-  const context = canvas.getContext('2d')
-  if (!context) {
-    return null
-  }
-  const gradient = context.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2)
-  gradient.addColorStop(0, 'rgba(255, 255, 255, 0.95)')
-  gradient.addColorStop(0.35, 'rgba(255, 208, 152, 0.75)')
-  gradient.addColorStop(1, 'rgba(255, 208, 152, 0)')
-  context.fillStyle = gradient
-  context.fillRect(0, 0, size, size)
-  return new THREE.CanvasTexture(canvas)
-}
+const skillGroups = [
+  {
+    title: 'Programming & Web Development',
+    items: [
+      'HTML & CSS - Responsive web development (Flexbox, Grid), semantic structure, and accessibility',
+      'JavaScript - Interactive frontend and working with APIs',
+      'React - Component-based development, state management, and project work',
+      'Python - Backend development and object-oriented programming (OOP)',
+      'Node.js - Backend logic and server-side solutions',
+      'Flask - Backend development and REST APIs',
+    ],
+  },
+  {
+    title: 'Databases',
+    items: [
+      'MySQL & PostgreSQL - Data modeling, relational databases, and SQL (CRUD, JOIN, queries)',
+      'Database integration in web applications',
+    ],
+  },
+  {
+    title: 'UX / UI & Design',
+    items: [
+      'Figma - Wireframes, prototypes, UI design',
+      'UX methods - Personas, user journeys, usability testing, and user tests',
+      'Information architecture and content structuring',
+    ],
+  },
+  {
+    title: 'Tools & Ways of Working',
+    items: [
+      'Git & GitHub - Version control for all school projects',
+      'Agile (Scrum) - Planning, sprints, and team implementation',
+      'WordPress - Further development and restructuring of websites',
+    ],
+  },
+  {
+    title: 'Information Security',
+    items: ['Basic understanding of risk analysis, threat modeling, and secure handling of systems'],
+  },
+  {
+    title: 'Languages',
+    items: ['Swedish - Fluent', 'English - Professional working proficiency', 'Arabic - Native'],
+  },
+  {
+    title: 'Other',
+    items: ["Driver's license (manual), familiar with logistics and warehouse systems"],
+  },
+]
+
+const hobbies = [
+  'Programming & tech - Enjoy building small projects to learn new languages and frameworks.',
+  'Training & health - Work out regularly and value an active lifestyle.',
+]
+
+const references = [
+  {
+    company: 'StudentConsulting (Schenker)',
+    contact: 'Contact: Robert Nilsson, Account Manager',
+    phone: 'Phone: +46 72-726 97 38',
+    email: 'Email: robert.nilsson@studentconsulting.com',
+  },
+  {
+    company: 'Airmee',
+    contact: 'Contact: Kemalettin Demirbas',
+    phone: 'Phone: +46 73-713 18 34',
+    email: 'Email: kemalettin.demirbas@airmee.com',
+  },
+  {
+    company: 'Cloudo AB',
+    contact: 'Contact: Christofer Boatright',
+    phone: 'Phone: +46 73-070 43 13',
+    email: 'Email: christofer.boatright@cloudo.se',
+  },
+]
 
 function App() {
-  const stageRef = useRef(null)
-  const targetIndexRef = useRef(0)
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [menuOpen, setMenuOpen] = useState(false)
 
-  const sectionList = useMemo(() => sections, [])
-
-  const goToIndex = (index) => {
-    const next = clamp(index, 0, sectionList.length - 1)
-    targetIndexRef.current = next
-    setActiveIndex(next)
+  const handleNavClick = () => {
+    setMenuOpen(false)
   }
 
-  useEffect(() => {
-    if (!stageRef.current) {
-      return
-    }
-
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const scene = new THREE.Scene()
-    scene.background = new THREE.Color(0x0b1020)
-    scene.fog = new THREE.Fog(0x0b1020, 10, 30)
-
-    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 120)
-    camera.position.set(0, 0.4, 7)
-
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-    renderer.setPixelRatio(window.devicePixelRatio || 1)
-    renderer.outputColorSpace = THREE.SRGBColorSpace
-    stageRef.current.appendChild(renderer.domElement)
-
-    const ambient = new THREE.AmbientLight(0xffffff, 0.65)
-    scene.add(ambient)
-    const keyLight = new THREE.DirectionalLight(0xf6d7ff, 0.9)
-    keyLight.position.set(6, 6, 4)
-    scene.add(keyLight)
-    const rimLight = new THREE.PointLight(0x66f2ff, 1.1, 18)
-    rimLight.position.set(-5, 2, 8)
-    scene.add(rimLight)
-    const warmLight = new THREE.PointLight(0xff8f6b, 0.8, 14)
-    warmLight.position.set(5, -2, 2)
-    scene.add(warmLight)
-
-    const floatGroup = new THREE.Group()
-    scene.add(floatGroup)
-
-    const materials = []
-    const geometries = []
-    const textures = []
-    const trackMaterial = (material) => {
-      materials.push(material)
-      return material
-    }
-    const trackGeometry = (geometry) => {
-      geometries.push(geometry)
-      return geometry
-    }
-    const trackTexture = (texture) => {
-      textures.push(texture)
-      return texture
-    }
-
-    const sectionSpacing = 5.2
-    const sectionBases = []
-    const sectionIndexById = new Map()
-
-    const getSectionPosition = (index) => {
-      const z = -index * sectionSpacing
-      const x = Math.sin(index * 0.55) * 1.6
-      const y = Math.cos(index * 0.45) * 0.45
-      return new THREE.Vector3(x, y, z)
-    }
-
-    sectionList.forEach((section, index) => {
-      sectionBases.push(getSectionPosition(index))
-      sectionIndexById.set(section.id, index)
-    })
-
-    const imageGroup = new THREE.Group()
-    floatGroup.add(imageGroup)
-
-    const textureLoader = new THREE.TextureLoader()
-    const imageGeometry = trackGeometry(new THREE.PlaneGeometry(1, 1))
-    const frameGeometry = trackGeometry(new THREE.PlaneGeometry(1, 1))
-
-    const imageMeshes = []
-    const imageFrames = []
-    const imageBases = []
-    const imageScales = []
-
-    imageSlides.forEach((slide, index) => {
-      let scale = { x: 3.6, y: 2.2 }
-      const texture = trackTexture(
-        textureLoader.load(slide.src, (loadedTexture) => {
-          if (loadedTexture.image?.width && loadedTexture.image?.height) {
-            const aspect = loadedTexture.image.width / loadedTexture.image.height
-            const maxWidth = 4.2
-            const maxHeight = 2.4
-            let width = maxHeight * aspect
-            let height = maxHeight
-            if (width > maxWidth) {
-              width = maxWidth
-              height = width / aspect
-            }
-            scale = { x: width, y: height }
-            imageScales[index] = scale
-            imageMeshes[index]?.scale.set(scale.x, scale.y, 1)
-            imageFrames[index]?.scale.set(scale.x * 1.08, scale.y * 1.08, 1)
-          }
-        })
-      )
-      texture.colorSpace = THREE.SRGBColorSpace
-      texture.anisotropy = Math.min(renderer.capabilities.getMaxAnisotropy(), 8)
-
-      const imageMaterial = trackMaterial(
-        new THREE.MeshBasicMaterial({
-          map: texture,
-          transparent: true,
-          opacity: 0.95,
-        })
-      )
-      const imageMesh = new THREE.Mesh(imageGeometry, imageMaterial)
-      imageMesh.scale.set(scale.x, scale.y, 1)
-
-      const frameMaterial = trackMaterial(
-        new THREE.MeshBasicMaterial({
-          color: 0x0b1b2f,
-          transparent: true,
-          opacity: 0.6,
-        })
-      )
-      const frameMesh = new THREE.Mesh(frameGeometry, frameMaterial)
-      frameMesh.scale.set(scale.x * 1.08, scale.y * 1.08, 1)
-      frameMesh.position.z = -0.04
-
-      const targetSectionId = slide.sections[0]
-      const targetSectionIndex = sectionIndexById.get(targetSectionId) ?? 0
-      const x = 0
-      const y = 0.1
-      const z = -sectionSpacing * (targetSectionIndex + 0.6)
-      const base = new THREE.Vector3(x, y, z)
-      imageBases.push(base)
-      imageScales.push(scale)
-
-      imageMesh.position.copy(base)
-      imageMesh.rotation.y = 0
-      frameMesh.position.x = imageMesh.position.x
-      frameMesh.position.y = imageMesh.position.y
-      frameMesh.position.z = imageMesh.position.z - 0.06
-      frameMesh.rotation.copy(imageMesh.rotation)
-
-      imageGroup.add(frameMesh)
-      imageGroup.add(imageMesh)
-      imageMeshes.push(imageMesh)
-      imageFrames.push(frameMesh)
-    })
-
-    const skyGeometry = trackGeometry(new THREE.SphereGeometry(40, 32, 32))
-    const skyMaterial = trackMaterial(
-      new THREE.ShaderMaterial({
-        uniforms: {
-          topColor: { value: new THREE.Color(0x2b1b52) },
-          bottomColor: { value: new THREE.Color(0x0b1020) },
-          offset: { value: 0.2 },
-          exponent: { value: 0.55 },
-        },
-        vertexShader: `
-          varying vec3 vWorldPosition;
-          void main() {
-            vec4 worldPosition = modelMatrix * vec4(position, 1.0);
-            vWorldPosition = worldPosition.xyz;
-            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-          }
-        `,
-        fragmentShader: `
-          uniform vec3 topColor;
-          uniform vec3 bottomColor;
-          uniform float offset;
-          uniform float exponent;
-          varying vec3 vWorldPosition;
-          void main() {
-            float h = normalize(vWorldPosition + offset).y;
-            float t = pow(max(h, 0.0), exponent);
-            gl_FragColor = vec4(mix(bottomColor, topColor, t), 1.0);
-          }
-        `,
-        side: THREE.BackSide,
-        depthWrite: false,
-      })
-    )
-    const sky = new THREE.Mesh(skyGeometry, skyMaterial)
-    scene.add(sky)
-
-    const grid = new THREE.GridHelper(40, 80, 0x66f2ff, 0x1c2742)
-    grid.position.y = -2.3
-    grid.rotation.x = Math.PI / 2
-    grid.material.transparent = true
-    grid.material.opacity = 0.35
-    scene.add(grid)
-
-    const ringGeometry = trackGeometry(new THREE.TorusGeometry(1.4, 0.05, 16, 120))
-    const ringMaterial = trackMaterial(
-      new THREE.MeshStandardMaterial({
-        color: 0x7df9ff,
-        metalness: 0.5,
-        roughness: 0.2,
-        emissive: 0x2f9bb7,
-        emissiveIntensity: 0.7,
-      })
-    )
-    const ring = new THREE.Mesh(ringGeometry, ringMaterial)
-    ring.position.set(-2.2, 0.8, -sectionSpacing * 0.6)
-    ring.rotation.x = Math.PI / 3
-    scene.add(ring)
-
-    const orbitGroup = new THREE.Group()
-    scene.add(orbitGroup)
-    const orbGeometry = trackGeometry(new THREE.SphereGeometry(0.18, 24, 24))
-    const orbMaterial = trackMaterial(
-      new THREE.MeshStandardMaterial({
-        color: 0xff8f6b,
-        metalness: 0.4,
-        roughness: 0.25,
-        emissive: 0xff6b4a,
-        emissiveIntensity: 0.8,
-      })
-    )
-    for (let i = 0; i < 4; i += 1) {
-      const orb = new THREE.Mesh(orbGeometry, orbMaterial)
-      orb.position.set(Math.sin(i) * 2.2, Math.cos(i * 1.3) * 1.1, -i * 2.2)
-      orbitGroup.add(orb)
-    }
-
-    const glowTexture = createGlowTexture()
-    let glowSprite = null
-    if (glowTexture) {
-      const glowMaterial = trackMaterial(
-        new THREE.SpriteMaterial({
-          map: glowTexture,
-          color: 0xffc38f,
-          transparent: true,
-          opacity: 0.8,
-          blending: THREE.AdditiveBlending,
-        })
-      )
-      glowSprite = new THREE.Sprite(glowMaterial)
-      glowSprite.position.set(2.6, 1.4, -sectionSpacing * 0.2)
-      glowSprite.scale.set(2.2, 2.2, 1)
-      scene.add(glowSprite)
-    }
-
-    const sparkGeometry = trackGeometry(new THREE.BufferGeometry())
-    const sparkCount = 300
-    const sparkPositions = new Float32Array(sparkCount * 3)
-    for (let i = 0; i < sparkCount; i += 1) {
-      sparkPositions[i * 3] = (Math.random() - 0.5) * 18
-      sparkPositions[i * 3 + 1] = (Math.random() - 0.5) * 10 + 0.5
-      sparkPositions[i * 3 + 2] = -Math.random() * sectionSpacing * (sectionList.length - 1) - 2
-    }
-    sparkGeometry.setAttribute('position', new THREE.BufferAttribute(sparkPositions, 3))
-    const sparkMaterial = trackMaterial(
-      new THREE.PointsMaterial({
-        color: 0x9ae6ff,
-        size: 0.07,
-        opacity: 0.65,
-        transparent: true,
-      })
-    )
-    const sparks = new THREE.Points(sparkGeometry, sparkMaterial)
-    scene.add(sparks)
-
-    let frameId = 0
-    let scrollCooldown = false
-    const pointer = { x: 0, y: 0 }
-    const tempVec = new THREE.Vector3()
-    const tempScale = new THREE.Vector3()
-
-    const onResize = () => {
-      if (!stageRef.current) {
-        return
-      }
-      const { clientWidth, clientHeight } = stageRef.current
-      camera.aspect = clientWidth / clientHeight
-      camera.updateProjectionMatrix()
-      renderer.setSize(clientWidth, clientHeight)
-    }
-
-    const onWheel = (event) => {
-      if (scrollCooldown) {
-        return
-      }
-      scrollCooldown = true
-      const direction = event.deltaY > 0 ? 1 : -1
-      targetIndexRef.current = clamp(
-        targetIndexRef.current + direction,
-        0,
-        sectionList.length - 1
-      )
-      setActiveIndex(targetIndexRef.current)
-      window.setTimeout(() => {
-        scrollCooldown = false
-      }, 420)
-    }
-
-    const onPointerMove = (event) => {
-      if (!stageRef.current) {
-        return
-      }
-      const bounds = stageRef.current.getBoundingClientRect()
-      const x = (event.clientX - bounds.left) / bounds.width
-      const y = (event.clientY - bounds.top) / bounds.height
-      pointer.x = clamp(x * 2 - 1, -1, 1)
-      pointer.y = clamp(-(y * 2 - 1), -1, 1)
-    }
-
-    const clock = new THREE.Clock()
-    const animate = () => {
-      const delta = clock.getDelta()
-      const targetBase = sectionBases[targetIndexRef.current] ?? new THREE.Vector3()
-      camera.position.x += (targetBase.x * 0.25 - camera.position.x) * 0.08
-      camera.position.y += (targetBase.y * 0.12 + 0.4 - camera.position.y) * 0.08
-      camera.position.z += (targetBase.z + 7 - camera.position.z) * 0.08
-      camera.lookAt(targetBase.x, targetBase.y, targetBase.z)
-
-      if (!prefersReducedMotion) {
-        ring.rotation.x += delta * 0.4
-        ring.rotation.y += delta * 0.5
-        orbitGroup.rotation.y += delta * 0.25
-        orbitGroup.rotation.z += delta * 0.08
-        floatGroup.rotation.y = pointer.x * 0.2 + Math.sin(clock.elapsedTime * 0.12) * 0.04
-        floatGroup.rotation.x = pointer.y * 0.12
-      }
-
-      const activeSectionId = sectionList[targetIndexRef.current]?.id
-      const eligibleIndices = imageSlides
-        .map((slide, index) => (slide.sections.includes(activeSectionId) ? index : -1))
-        .filter((index) => index !== -1)
-      const activeImage = eligibleIndices.length ? eligibleIndices[0] : 0
-
-      imageMeshes.forEach((mesh, index) => {
-        const base = imageBases[index]
-        if (!base) {
-          return
-        }
-        const slot = eligibleIndices.indexOf(index)
-        const isActive = slot !== -1
-        const depthOffset = isActive ? 0.8 - slot * 0.18 : -0.8
-        const yOffset = isActive ? 0.1 - slot * 0.1 : -0.2
-        const xOffset = 0
-        const targetZ = base.z + depthOffset
-        mesh.position.lerp(tempVec.set(base.x + xOffset, base.y + yOffset, targetZ), 0.08)
-        const baseScale = imageScales[index] ?? { x: 3.6, y: 2.2 }
-        const scaleBoost = isActive ? 1 - slot * 0.06 : 0.7
-        mesh.scale.lerp(
-          tempScale.set(baseScale.x * scaleBoost, baseScale.y * scaleBoost, 1),
-          0.08
-        )
-        mesh.material.opacity = isActive ? 0.98 - slot * 0.15 : 0
-
-        const frame = imageFrames[index]
-        if (frame) {
-          frame.position.x = mesh.position.x
-          frame.position.y = mesh.position.y
-          frame.position.z = mesh.position.z - 0.06
-          frame.rotation.copy(mesh.rotation)
-          frame.scale.copy(mesh.scale).multiplyScalar(1.08)
-          frame.material.opacity = isActive ? 0.65 - slot * 0.12 : 0
-        }
-      })
-
-      renderer.render(scene, camera)
-      frameId = window.requestAnimationFrame(animate)
-    }
-
-    onResize()
-    animate()
-    window.addEventListener('resize', onResize)
-    window.addEventListener('wheel', onWheel, { passive: true })
-    window.addEventListener('pointermove', onPointerMove)
-
-    return () => {
-      window.removeEventListener('resize', onResize)
-      window.removeEventListener('wheel', onWheel)
-      window.removeEventListener('pointermove', onPointerMove)
-      window.cancelAnimationFrame(frameId)
-      geometries.forEach((geometry) => geometry.dispose())
-      materials.forEach((material) => material.dispose())
-      textures.forEach((texture) => texture.dispose())
-      if (Array.isArray(grid.material)) {
-        grid.material.forEach((material) => material.dispose())
-      } else if (grid.material) {
-        grid.material.dispose()
-      }
-      if (glowTexture) {
-        glowTexture.dispose()
-      }
-      renderer.dispose()
-      if (renderer.domElement.parentNode) {
-        renderer.domElement.parentNode.removeChild(renderer.domElement)
-      }
-    }
-  }, [sectionList])
-
-  const activeSection = sectionList[activeIndex]
-
   return (
-    <div className="three-root">
-      <header className="three-ui">
-        <div className="brand">
-          <span className="brand-mark" />
-          <div>
-            <p className="brand-title">Amjad Sharqawi</p>
-            <p className="brand-subtitle">interactive portfolio</p>
-          </div>
-        </div>
-        <nav className="three-nav">
-          {sectionList.map((section, index) => (
-            <button
-              key={section.id}
-              type="button"
-              className={index === activeIndex ? 'active' : ''}
-              onClick={() => goToIndex(index)}
+    <div className={`page ${menuOpen ? 'menu-open' : ''}`}>
+      <header className="site-header">
+        <div className="header-row">
+          <div className="social-links" aria-label="Social links">
+            <a
+              className="social-link"
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
             >
-              {section.navLabel ?? section.title}
-            </button>
-          ))}
-        </nav>
-        <div className="three-cta">
-          <a className="ghost" href={`mailto:${CONTACT_EMAIL}`}>
-            Email
-          </a>
-          <a className="primary" href={`tel:${CONTACT_PHONE_LINK}`}>
-            Call
+              <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                <path d="M20.45 20.45h-3.56v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85v5.5H9.45V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.62 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.44a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45z" />
+              </svg>
+            </a>
+            <a
+              className="social-link"
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+            >
+              <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                <path d="M12 7.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4zm0 7.75a3.05 3.05 0 1 1 0-6.1 3.05 3.05 0 0 1 0 6.1zm6.06-7.94a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM20.5 12c0-1.53.01-3.05-.07-4.58-.08-1.52-.42-2.87-1.53-3.98-1.1-1.1-2.46-1.45-3.98-1.53C13.4 1.83 11.87 1.84 10.35 1.92c-1.52.08-2.87.42-3.98 1.53-1.1 1.1-1.45 2.46-1.53 3.98C4.76 8.95 4.77 10.47 4.77 12s-.01 3.05.07 4.58c.08 1.52.42 2.87 1.53 3.98 1.1 1.1 2.46 1.45 3.98 1.53 1.52.08 3.05.07 4.58.07s3.05.01 4.58-.07c1.52-.08 2.87-.42 3.98-1.53 1.1-1.1 1.45-2.46 1.53-3.98.08-1.52.07-3.05.07-4.58zm-1.8 6.02a3.26 3.26 0 0 1-1.83 1.83c-1.27.5-4.29.38-4.87.38s-3.6.12-4.87-.38a3.26 3.26 0 0 1-1.83-1.83c-.5-1.27-.38-4.29-.38-4.87s-.12-3.6.38-4.87a3.26 3.26 0 0 1 1.83-1.83c1.27-.5 4.29-.38 4.87-.38s3.6-.12 4.87.38a3.26 3.26 0 0 1 1.83 1.83c.5 1.27.38 4.29.38 4.87s.12 3.6-.38 4.87z" />
+              </svg>
+            </a>
+            <a
+              className="social-link"
+              href="https://github.com/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub"
+            >
+              <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                <path d="M12 2.2a9.8 9.8 0 0 0-3.1 19.1c.49.1.67-.22.67-.48v-1.68c-2.73.6-3.3-1.2-3.3-1.2-.45-1.14-1.1-1.44-1.1-1.44-.9-.62.07-.6.07-.6 1 .07 1.53 1.04 1.53 1.04.9 1.52 2.36 1.08 2.94.83.1-.66.35-1.08.64-1.33-2.18-.25-4.47-1.1-4.47-4.88 0-1.07.38-1.95 1.02-2.64-.1-.26-.45-1.28.1-2.67 0 0 .83-.27 2.72 1.02a9.3 9.3 0 0 1 4.96 0c1.88-1.3 2.71-1.02 2.71-1.02.55 1.4.2 2.42.1 2.67.63.69 1.02 1.57 1.02 2.64 0 3.79-2.3 4.63-4.5 4.87.36.3.68.92.68 1.86v2.76c0 .26.18.59.68.48A9.8 9.8 0 0 0 12 2.2z" />
+              </svg>
+            </a>
+          </div>
+          <button
+            className="menu-toggle"
+            type="button"
+            aria-expanded={menuOpen}
+            aria-controls="site-nav"
+            aria-label="Open menu"
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
+        <div className={`nav-wrap ${menuOpen ? 'open' : ''}`}>
+          <nav className="nav" id="site-nav">
+            <a href="#home" onClick={handleNavClick}>
+              Home
+            </a>
+            <a href="#about" onClick={handleNavClick}>
+              About
+            </a>
+            <a href="#experience" onClick={handleNavClick}>
+              Experience
+            </a>
+            <a href="#education" onClick={handleNavClick}>
+              Education
+            </a>
+            <a href="#projects" onClick={handleNavClick}>
+              Projects
+            </a>
+            <a href="#skills" onClick={handleNavClick}>
+              Skills
+            </a>
+            <a href="#references" onClick={handleNavClick}>
+              References
+            </a>
+            <a href="#contact" onClick={handleNavClick}>
+              Contact
+            </a>
+          </nav>
+          <a className="cta" href="mailto:amjadsharqawi20@gmail.com" onClick={handleNavClick}>
+            Send email
           </a>
         </div>
       </header>
-      <div className="three-stage" ref={stageRef} />
-      <main className="three-overlay">
-        {activeSection && (
-          <article className="three-card">
-            <div className="three-card-top">
-              <div className="three-card-dots">
-                <span />
-                <span />
-                <span />
-              </div>
-              <span className="three-card-kicker">{activeSection.navLabel}</span>
+
+      <main>
+        <section id="home" className="hero">
+          <div className="hero-content">
+            <p className="eyebrow reveal" style={{ '--delay': '0.1s' }}>
+              Information architecture student
+            </p>
+            <h1 className="reveal" style={{ '--delay': '0.2s' }}>
+              Amjad Sharqawi
+            </h1>
+            <p className="lead reveal" style={{ '--delay': '0.3s' }}>
+              Engaged third-year information architecture student at Malmo University, aiming to
+              become a full-stack developer. I am seeking both part-time and full-time roles to
+              grow my practical skills.
+            </p>
+            <div className="hero-actions reveal" style={{ '--delay': '0.4s' }}>
+              <a className="button primary" href="mailto:amjadsharqawi20@gmail.com">
+                Send email
+              </a>
+              <a className="button ghost" href="tel:0700215351">
+                Call me
+              </a>
             </div>
-            <h1 className="three-card-title">{activeSection.title}</h1>
-            {activeSection.subtitle && (
-              <p className="three-card-subtitle">{activeSection.subtitle}</p>
-            )}
-            <ul className="three-card-list">
-              {activeSection.lines.map((line) => (
-                <li key={line}>{line}</li>
-              ))}
-            </ul>
-          </article>
-        )}
+            <div className="hero-metrics reveal" style={{ '--delay': '0.5s' }}>
+              <div>
+                <span className="metric">amjadsharqawi20@gmail.com</span>
+                <span className="metric-label">Email</span>
+              </div>
+              <div>
+                <span className="metric">070-021 53 51</span>
+                <span className="metric-label">Phone</span>
+              </div>
+              <div>
+                <span className="metric">Limhamn, Malmo</span>
+                <span className="metric-label">Location</span>
+              </div>
+            </div>
+          </div>
+          <div className="hero-card reveal" style={{ '--delay': '0.4s' }}>
+            <div className="portrait-wrap">
+              <img src={profileImage} alt="Portrait of Amjad Sharqawi" />
+            </div>
+            <div className="hero-card-body">
+              <h3>Quick profile</h3>
+              <p>
+                Flexible, detail-oriented, and punctual. I thrive both in teams and independently
+                and look for roles where I can grow in practice.
+              </p>
+              <div className="chip-row">
+                <span>Full-stack goal</span>
+                <span>Agile</span>
+                <span>UX/UI</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" className="about">
+          <div className="section-title">
+            <p className="eyebrow">About me</p>
+            <h2>Engaged student focused on practical skills.</h2>
+          </div>
+          <div className="about-grid">
+            <div className="about-card">
+              <p>
+                I am seeking both part-time and full-time roles to develop my practical skills.
+                As a person, I am flexible, detail-oriented, and punctual, and I enjoy working both
+                in teams and independently.
+              </p>
+            </div>
+            <div className="about-card accent">
+              <h3>Focus areas</h3>
+              <ul>
+                <li>Full-stack development and web applications.</li>
+                <li>Structure, usability, and accessibility.</li>
+                <li>Professional dialogue and continuous feedback.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="experience" className="timeline">
+          <div className="section-title">
+            <p className="eyebrow">Work experience</p>
+            <h2>Work experience.</h2>
+          </div>
+          <div className="timeline-grid">
+            {workExperience.map((role) => (
+              <div className="timeline-card" key={role.role}>
+                <div className="timeline-year">{role.period}</div>
+                <h3>{role.role}</h3>
+                {role.link ? (
+                  <a className="text-link" href={role.link} target="_blank" rel="noreferrer">
+                    Visit website
+                  </a>
+                ) : null}
+                {role.image ? (
+                  <img className="timeline-image" src={role.image} alt={role.imageAlt} />
+                ) : role.imageLabel ? (
+                  <div className="timeline-image placeholder">{role.imageLabel}</div>
+                ) : null}
+                {role.tags ? (
+                  <div className="timeline-tags">
+                    {role.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                ) : null}
+                <ul>
+                  {role.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="education" className="projects">
+          <div className="section-title">
+            <p className="eyebrow">Education</p>
+            <h2>Education.</h2>
+          </div>
+          <div className="project-grid">
+            {education.map((item) => (
+              <article className="project-card" key={item.title}>
+                <div className="project-body">
+                  <h3>{item.title}</h3>
+                  <p>{item.period}</p>
+                  <ul>
+                    {item.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="projects" className="projects">
+          <div className="section-title">
+            <p className="eyebrow">Projects</p>
+            <h2>Projects I have worked on.</h2>
+          </div>
+          <div className="project-grid">
+            {projects.map((project) => (
+              <article className="project-card" key={project.title}>
+                {project.image ? (
+                  <img
+                    className="project-image"
+                    src={project.image}
+                    alt={project.imageAlt}
+                  />
+                ) : (
+                  <div className="project-image placeholder">Image coming soon</div>
+                )}
+                <div className="project-body">
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                  {project.link ? (
+                    <a className="text-link" href={project.link} target="_blank" rel="noreferrer">
+                      Visit website
+                    </a>
+                  ) : null}
+                  <div className="project-tags">
+                    {project.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="skills" className="skills">
+          <div className="section-title">
+            <p className="eyebrow">Skills</p>
+            <h2>Skills and tools.</h2>
+          </div>
+          <div className="skills-grid">
+            {skillGroups.map((skill) => (
+              <div className="skill-card" key={skill.title}>
+                <h3>{skill.title}</h3>
+                <div className="skill-tags">
+                  {skill.items.map((item) => (
+                    <span key={item}>{item}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="references" className="about">
+          <div className="section-title">
+            <p className="eyebrow">References</p>
+            <h2>References.</h2>
+          </div>
+          <div className="about-grid">
+            {references.map((reference) => (
+              <div className="about-card" key={reference.company}>
+                <h3>{reference.company}</h3>
+                <p>{reference.contact}</p>
+                <p>{reference.phone}</p>
+                <p>{reference.email}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="about">
+          <div className="section-title">
+            <p className="eyebrow">Interests</p>
+            <h2>Interests.</h2>
+          </div>
+          <div className="about-grid">
+            {hobbies.map((hobby) => (
+              <div className="about-card" key={hobby}>
+                <p>{hobby}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="contact" className="contact">
+          <div className="contact-card">
+            <div>
+              <p className="eyebrow">Contact</p>
+              <h2>Feel free to reach out.</h2>
+              <p className="lead">
+                Email: amjadsharqawi20@gmail.com<br />
+                Phone: 070-021 53 51<br />
+                Location: Limhamn, Malmo
+              </p>
+            </div>
+            <div className="contact-actions">
+              <a className="button primary" href="mailto:amjadsharqawi20@gmail.com">
+                Send email
+              </a>
+              <a className="button ghost" href="tel:0700215351">
+                Call me
+              </a>
+            </div>
+          </div>
+        </section>
       </main>
-      <div className="three-hint">Scroll or use the nav to explore</div>
+
+      <footer className="site-footer">
+        <p>(c) 2024 Amjad Sharqawi. All rights reserved.</p>
+      </footer>
     </div>
   )
 }
 
 export default App
+
+
+
