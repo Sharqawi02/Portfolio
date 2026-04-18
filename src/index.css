@@ -1,20 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Sora:wght@400;500;600;700&display=swap');
 
 :root {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   line-height: 1.6;
   font-weight: 400;
-  color: #0f1b2d;
-  background-color: #f7f1e9;
+  color: #18161f;
+  background-color: #f4ede4;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
-  --ink: #0f1b2d;
-  --muted: #4c5565;
-  --accent: #f15a24;
-  --accent-2: #2b6cb0;
-  --card: rgba(255, 255, 255, 0.78);
-  --shadow: 0 20px 60px rgba(15, 27, 45, 0.12);
+  --font-display: 'Sora', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --bg: #f4ede4;
+  --paper: rgba(255, 250, 244, 0.84);
+  --ink: #18161f;
+  --muted: #756d7c;
+  --muted-strong: #4c4653;
+  --line: rgba(24, 22, 31, 0.12);
+  --accent: #0f8b8d;
+  --accent-2: #ff6f40;
+  --accent-3: #b1dd49;
+  --shadow: 0 22px 55px rgba(24, 22, 31, 0.1);
 }
 
 *,
@@ -23,13 +31,21 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(255, 232, 214, 0.8), transparent 55%),
-    radial-gradient(circle at 20% 80%, rgba(224, 240, 255, 0.8), transparent 60%),
-    #f7f1e9;
+    linear-gradient(rgba(24, 22, 31, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 22, 31, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 10% 14%, rgba(12, 140, 141, 0.16), transparent 22%),
+    radial-gradient(circle at 85% 10%, rgba(255, 111, 64, 0.16), transparent 20%),
+    radial-gradient(circle at 60% 88%, rgba(177, 221, 73, 0.14), transparent 20%),
+    var(--bg);
+  background-size: 42px 42px, 42px 42px, auto, auto, auto, auto;
 }
 
 a {
@@ -42,15 +58,21 @@ img {
   max-width: 100%;
 }
 
-p {
+p,
+ul,
+h1,
+h2,
+h3,
+h4 {
   margin: 0;
 }
 
 h1,
 h2,
-h3 {
-  font-family: 'Fraunces', serif;
-  margin: 0;
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
 }
 
 ul {
@@ -58,7 +80,7 @@ ul {
 }
 
 .reveal {
-  animation: rise 0.8s ease both;
+  animation: rise 0.7s ease both;
   animation-delay: var(--delay, 0s);
 }
 
