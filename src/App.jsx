@@ -485,7 +485,6 @@ function App() {
               <p className="section-kicker">Quick snapshot</p>
               <h2>React, UX, and information architecture.</h2>
               <p>
-                This portfolio is built to match the CV, so the same profile and direction are clearly visible here in the work, the case study, and the way I talk about how I work and what I can do.
               </p>
             </div>
 
