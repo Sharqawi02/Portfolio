@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import portraitImage from './assets/images/My.jpeg'
 import curaQuizImage from './assets/images/Cura Quiz.png'
 import schedularImage from './assets/images/Schedular.png'
 import cloudoImage from './assets/images/Cloudo.png'
@@ -110,10 +109,10 @@ const experience = [
     copy: 'Developed and restructured a company website in WordPress, improving content organization, usability, and the overall information architecture.',
   },
   {
-    period: '2023 — Present',
-    role: 'Information Architecture',
+    period: '2023 — 2026',
+    role: 'Information Architecture Graduate',
     company: 'Malmö University',
-    copy: 'Studying web development, UX/UI, information structure, APIs, databases, and agile product work with a focus on practical digital experiences.',
+    copy: 'Completed studies covering web development, UX/UI, information structure, APIs, databases, and agile product work with a focus on practical digital experiences.',
   },
   {
     period: '2022 — 2024',
@@ -300,10 +299,18 @@ function App() {
           </div>
 
           <div className="hero-visual reveal visible">
-            <div className="portrait-orbit orbit-one" />
-            <div className="portrait-orbit orbit-two" />
-            <div className="portrait-frame">
-              <img src={portraitImage} alt="Amjad Sharqawi smiling" />
+            <div className="identity-orbit orbit-one" />
+            <div className="identity-orbit orbit-two" />
+            <div className="identity-frame" aria-label="Amjad Sharqawi — frontend developer">
+              <span className="identity-overline">Frontend · UX · IA</span>
+              <strong className="identity-monogram">AS</strong>
+              <div className="identity-divider" />
+              <p>Building clear digital products from structure to interface.</p>
+              <div className="identity-code" aria-hidden="true">
+                <span>01</span>
+                <span>React</span>
+                <span>Design systems</span>
+              </div>
             </div>
             <div className="floating-note note-role">
               <span>Focus</span>
@@ -330,7 +337,7 @@ function App() {
             </div>
             <div className="about-copy reveal">
               <p>
-                I’m studying Information Architecture at Malmö University, where frontend development, UX, content structure, and technology meet. That perspective helps me design beyond decoration.
+                I completed my studies in Information Architecture at Malmö University, where frontend development, UX, content structure, and technology meet. That perspective helps me design beyond decoration.
               </p>
               <p>
                 My work moves from wireframes and user flows into responsive React components, API integrations, and database-backed features. I enjoy building things that solve real problems without making the experience feel complicated.

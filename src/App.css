@@ -298,32 +298,90 @@
   aspect-ratio: 0.88;
 }
 
-.portrait-frame {
+.identity-frame {
   position: absolute;
   inset: 8% 10% 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   overflow: hidden;
+  padding: clamp(28px, 5vw, 54px);
   border-radius: 48% 48% 20px 20px;
-  background: #1b2627;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    radial-gradient(circle at 55% 26%, rgba(186, 244, 74, 0.24), transparent 32%),
+    linear-gradient(155deg, #1a2627, #10191a 72%);
+  background-size: 28px 28px, 28px 28px, auto, auto;
   border: 1px solid rgba(255, 255, 255, 0.16);
   box-shadow: 0 34px 70px rgba(0, 0, 0, 0.42);
+  isolation: isolate;
 }
 
-.portrait-frame::after {
+.identity-frame::after {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(13, 20, 21, 0.62), transparent 38%);
+  width: 210px;
+  height: 210px;
+  top: 16%;
+  right: -18%;
+  z-index: -1;
+  border: 1px solid rgba(255, 120, 90, 0.38);
+  border-radius: 50%;
 }
 
-.portrait-frame img {
+.identity-overline {
+  color: #9ca8a8;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.identity-monogram {
+  margin: auto 0 16px;
+  color: var(--lime);
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 12vw, 10rem);
+  line-height: 0.8;
+  letter-spacing: -0.1em;
+}
+
+.identity-divider {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 70%;
-  filter: saturate(0.8) contrast(1.04);
+  height: 1px;
+  margin-bottom: 18px;
+  background: rgba(255, 255, 255, 0.16);
 }
 
-.portrait-orbit {
+.identity-frame > p {
+  max-width: 28ch;
+  color: #c1caca;
+  line-height: 1.6;
+}
+
+.identity-code {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.identity-code span {
+  padding: 7px 10px;
+  color: #aeb8b8;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  font-size: 0.68rem;
+}
+
+.identity-code span:first-child {
+  color: var(--night);
+  background: var(--coral);
+  border-color: var(--coral);
+}
+
+.identity-orbit {
   position: absolute;
   border: 1px solid rgba(186, 244, 74, 0.36);
   border-radius: 50%;
