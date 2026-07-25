@@ -97,9 +97,7 @@ const projects = [
     image: cloudoImage,
     alt: 'Cloudo company website landing page',
     stack: ['WordPress', 'UX/UI', 'Information architecture'],
-    links: [
-      { label: 'Visit live site', href: 'https://cloudo.se/' },
-      { label: 'View more work', href: githubHref }],
+    links: [{ label: 'View more work', href: githubHref }],
   },
 ]
 
