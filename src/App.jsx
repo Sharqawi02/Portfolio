@@ -5,7 +5,7 @@ import schedularImage from './assets/images/Schedular.png'
 import cloudoImage from './assets/images/Cloudo.png'
 
 const githubHref = 'https://github.com/Sharqawi02'
-const resumeHref = '/Amjad_Sharqawi_CV_fullstack developer.pdf'
+const resumeHref = '/Amjad_Sharqawi_CV_ATS.pdf'
 const emailHref = 'mailto:amjadsharqawi20@gmail.com?subject=Portfolio%20inquiry'
 const formEndpoint = 'https://formsubmit.co/ajax/amjadsharqawi20@gmail.com'
 
