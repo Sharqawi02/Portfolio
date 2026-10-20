@@ -3,42 +3,34 @@ import './App.css'
 import curaQuizImage from './assets/images/Cura Quiz.png'
 import schedularImage from './assets/images/Schedular.png'
 import cloudoImage from './assets/images/Cloudo.png'
+import smartStudyImage from './assets/images/SmartStudy.png'
 
 const githubHref = 'https://github.com/Sharqawi02'
-const resumeHref = '/Amjad_Sharqawi_CV_ATS.pdf?v=20260903-135250'
+const resumeHref = '/Amjad_Sharqawi_CV.pdf'
+const smartStudyHref = 'https://github.com/Sharqawi02/SmartStudy'
 const emailHref = 'mailto:amjadsharqawi20@gmail.com?subject=Portfolio%20inquiry'
-const formEndpoint = 'https://formsubmit.co/ajax/amjadsharqawi20@gmail.com'
+const formEndpoint = 'https://formsubmit.co/amjadsharqawi20@gmail.com'
 
 const navigation = [
   { href: '#about', label: 'About' },
   { href: '#skills', label: 'Skills' },
-  { href: '#services', label: 'Services' },
+  { href: '#services', label: 'What I bring' },
   { href: '#projects', label: 'Projects' },
   { href: '#experience', label: 'Experience' },
   { href: '#contact', label: 'Contact' },
 ]
 
 const skills = [
-  { name: 'React & component design', level: 90 },
-  { name: 'HTML & modern CSS', level: 92 },
-  { name: 'JavaScript', level: 84 },
-  { name: 'UX & information architecture', level: 88 },
-  { name: 'REST APIs', level: 76 },
-  { name: 'Python & Flask', level: 68 },
-  { name: 'PostgreSQL & MySQL', level: 72 },
+  { name: 'Frontend development', detail: 'React, JavaScript, Chakra UI, HTML5 and responsive CSS.' },
+  { name: 'Backend & APIs', detail: 'Node.js, Python (Flask), Java, C#, REST APIs and JSON.' },
+  { name: 'Databases', detail: 'PostgreSQL, MySQL, SQL and relational database design.' },
+  { name: 'UX & information architecture', detail: 'Wireframes, user flows, interaction design and usability testing.' },
+  { name: 'Research & evaluation', detail: 'Quantitative research, Google Analytics 4 and Google Tag Manager.' },
 ]
 
 const tools = [
-  'React',
-  'JavaScript',
-  'HTML5',
-  'CSS3',
-  'Figma',
-  'Node.js',
-  'Python',
-  'PostgreSQL',
-  'Git',
-  'WordPress',
+  'React', 'JavaScript', 'Python', 'Flask', 'Node.js', 'Java', 'C#',
+  'PostgreSQL', 'MySQL', 'Figma', 'Git', 'WordPress',
 ]
 
 const services = [
@@ -59,8 +51,8 @@ const services = [
   {
     number: '03',
     icon: 'database',
-    title: 'Full-stack foundations',
-    copy: 'Practical API, validation, and database experience that helps the frontend work with real product data.',
+    title: 'Full-stack development',
+    copy: 'Connected applications with REST APIs, session-based authentication, input validation, and relational data storage.',
     tags: ['REST APIs', 'Python', 'PostgreSQL'],
   },
 ]
@@ -68,6 +60,16 @@ const services = [
 const projects = [
   {
     number: '01',
+    title: 'SmartStudy',
+    category: 'Personal full-stack project',
+    copy: 'I built a full-stack study planner that prioritizes courses by difficulty and exam dates. My work covers the React interface, Flask API, authentication, and saved plans, with AI study recommendations and a local fallback.',
+    stack: ['React', 'Vite', 'Flask', 'PostgreSQL', 'OpenAI API'],
+    image: smartStudyImage,
+    alt: 'SmartStudy landing page with study planning introduction and Swedish interface',
+    links: [{ label: 'Explore source on GitHub', href: smartStudyHref }],
+  },
+  {
+    number: '02',
     title: 'Cura Quiz',
     category: 'Medical learning platform',
     copy: 'A production quiz application used by medical students in Gothenburg. I built a clear, low-friction learning flow with dynamic questions and result states.',
@@ -80,55 +82,60 @@ const projects = [
     ],
   },
   {
-    number: '02',
-    title: 'Schedular',
+    number: '03',
+    title: 'BlueSky',
+    category: 'Full-stack content publishing application',
+    copy: 'A full-stack content publishing app with a Java backend. I worked on input handling and validation, connecting the publishing workflow with backend application logic.',
+    stack: ['Java', 'Full-stack development', 'Input validation'],
+    links: [{ label: 'Explore source on GitHub', href: 'https://github.com/SamanMau/Bluesky-project' }],
+  },
+  {
+    number: '04',
+    title: 'Scheduler',
     category: 'Full-stack planning application',
     copy: 'A calendar experience inspired by familiar planning tools, created to make activities, priorities, and time easier to organize.',
     image: schedularImage,
     alt: 'Schedular calendar and activity form interface',
     stack: ['React', 'Python', 'REST API', 'PostgreSQL'],
-    links: [{ label: 'Explore on GitHub', href: githubHref }],
+    links: [{ label: 'Explore on GitHub', href: 'https://github.com/Sharqawi02/Schedular' }],
   },
   {
-    number: '03',
+    number: '05',
     title: 'Cloudo',
     category: 'Website restructuring & UX',
     copy: 'A professional internship project focused on restructuring content, improving information architecture, and creating a clearer company website experience.',
     image: cloudoImage,
     alt: 'Cloudo company website landing page',
     stack: ['WordPress', 'UX/UI', 'Information architecture'],
-    links: [
-      { label: 'Visit live site', href: 'https://cloudo.se/' },  
-      { label: 'View more work', href: githubHref }],
+    links: [{ label: 'Visit live site', href: 'https://cloudo.se/' }],
   },
 ]
 
 const experience = [
   {
-    period: '2025',
+    period: '2025 · 4 months',
     role: 'Web Developer Intern',
     company: 'Cloudo AB',
-    copy: 'Developed and restructured a company website in WordPress, improving content organization, usability, and the overall information architecture.',
+    copy: 'Redeveloped and restructured a company website in WordPress. Worked with stakeholders to translate business requirements into clearer navigation, content hierarchy, and usable page structures.',
   },
   {
-    period: '2023 — 2026',
-    role: 'Information Architecture Graduate',
-    company: 'Malmö University',
-    copy: 'Completed studies covering web development, UX/UI, information structure, APIs, databases, and agile product work with a focus on practical digital experiences.',
+    period: '2023 — June 2026',
+    role: 'BSc, Computer and Information Science',
+    company: 'Malmö University · 180 credits',
+    copy: 'Studies spanning web development, web services, databases, object-oriented programming, information security, Agile/Scrum, interaction design, and UX evaluation.',
   },
   {
-    period: '2022 — 2024',
-    role: 'Operations & Logistics',
-    company: 'Airmee / Schenker',
-    copy: 'Built a dependable working style through fast-paced team environments where structure, communication, and consistent execution mattered every day.',
+    period: '2026 · Bachelor’s thesis',
+    role: 'UX Research in EdTech',
+    company: 'Co-authored · 15 credits',
+    copy: 'Studied how layout and animation affect conversion in a 2 × 2 experiment with 43 participants on a live EdTech landing page. Measured click-through and engagement using GA4 and Google Tag Manager with opt-in consent. Fisher’s Exact Test found no significant click-through effect (p > 0.05).',
   },
 ]
 
 const contactLinks = [
+  { label: 'CV', value: 'View my CV', href: resumeHref },
   { label: 'Email', value: 'amjadsharqawi20@gmail.com', href: 'mailto:amjadsharqawi20@gmail.com' },
-  { label: 'Phone', value: '070-021 53 51', href: 'tel:+46700215351' },
   { label: 'GitHub', value: 'github.com/Sharqawi02', href: githubHref },
-  { label: 'Resume', value: 'Download my CV', href: resumeHref },
 ]
 
 function Icon({ name }) {
@@ -161,7 +168,6 @@ function SectionHeading({ eyebrow, title, copy, light = false }) {
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
-  const [formStatus, setFormStatus] = useState({ state: 'idle', message: '' })
 
   useEffect(() => {
     const revealObserver = new IntersectionObserver(
@@ -192,45 +198,17 @@ function App() {
 
   const closeMenu = () => setMenuOpen(false)
 
-  const handleContactSubmit = async (event) => {
-    event.preventDefault()
+  const handleContactSubmit = (event) => {
     const form = event.currentTarget
-    const formData = new FormData(form)
 
-    setFormStatus({ state: 'sending', message: 'Sending your message…' })
-
-    try {
-      const response = await fetch(formEndpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.get('name'),
-          email: formData.get('email'),
-          subject: formData.get('subject'),
-          message: formData.get('message'),
-          _subject: `New portfolio message from ${formData.get('name')}`,
-          _template: 'table',
-          _captcha: 'false',
-          _honey: formData.get('_honey'),
-        }),
-      })
-
-      if (!response.ok) throw new Error('Message delivery failed')
-
-      form.reset()
-      setFormStatus({
-        state: 'success',
-        message: 'Thank you — your message has been sent. I’ll get back to you soon.',
-      })
-    } catch {
-      setFormStatus({
-        state: 'error',
-        message: 'I couldn’t send that message. Please try again or use the email link.',
-      })
+    // Client validation improves feedback; FormSubmit verifies CAPTCHA server-side.
+    for (const name of ['name', 'email', 'subject', 'message']) {
+      const field = form.elements.namedItem(name)
+      field.value = field.value.trim()
+      field.setCustomValidity(field.value ? '' : 'Please fill in this field.')
     }
+
+    if (!form.reportValidity()) event.preventDefault()
   }
 
   return (
@@ -278,12 +256,12 @@ function App() {
           <div className="hero-glow hero-glow-two" aria-hidden="true" />
 
           <div className="hero-copy reveal visible">
-            <p className="eyebrow light"><span />Frontend developer · Malmö, Sweden</p>
+            <p className="eyebrow light"><span />Software development · UX/UI · Information architecture</p>
             <h1>
-              I build digital experiences that feel <em>clear</em>, useful, and human.
+              Hi, I’m <em>Amjad Sharqawi.</em>
             </h1>
             <p className="hero-intro">
-              I’m Amjad, a React-focused developer with a foundation in UX and information architecture. I turn complex ideas into structured, responsive products.
+              A software developer with a background in UX/UI and information architecture. I enjoy turning complex problems into clear, useful experiences, and I’m looking for a team where I can contribute, collaborate, and keep growing.
             </p>
             <div className="hero-actions">
               <a className="button button-accent" href="#projects">
@@ -301,26 +279,28 @@ function App() {
           </div>
 
           <div className="hero-visual reveal visible">
-            <div className="identity-orbit orbit-one" />
-            <div className="identity-orbit orbit-two" />
-            <div className="identity-frame" aria-label="Amjad Sharqawi — frontend developer">
-              <span className="identity-overline">Frontend · UX · IA</span>
-              <strong className="identity-monogram">AS</strong>
-              <div className="identity-divider" />
-              <p>Building clear digital products from structure to interface.</p>
-              <div className="identity-code" aria-hidden="true">
-                <span>01</span>
-                <span>React</span>
-                <span>Design systems</span>
+            <div className="identity-frame" aria-label="Amjad Sharqawi — software developer">
+              <div className="identity-topline">
+                <span className="identity-overline">Developer & designer</span>
+                <span className="identity-mark" aria-hidden="true"><Icon name="code" /></span>
               </div>
-            </div>
-            <div className="floating-note note-role">
-              <span>Focus</span>
-              <strong>React + UX</strong>
-            </div>
-            <div className="floating-note note-status">
-              <span className="status-dot" />
-              Open to opportunities
+              <div className="identity-art" aria-hidden="true">
+                <strong className="identity-monogram">AS<span>.</span></strong>
+              </div>
+              <div className="identity-details">
+                <h2>Amjad Sharqawi</h2>
+                <p>Software development, shaped by UX.</p>
+                <div className="identity-code">
+                  <span>Full-stack</span>
+                  <span>UX/UI</span>
+                  <span>Information architecture</span>
+                </div>
+              </div>
+              <div className="identity-status">
+                <span className="status-dot" aria-hidden="true" />
+                Open to opportunities
+                <Icon name="arrow" />
+              </div>
             </div>
           </div>
 
@@ -335,21 +315,21 @@ function App() {
             <div className="about-number reveal" aria-hidden="true">01</div>
             <div className="about-lead reveal">
               <p className="eyebrow"><span />About me</p>
-              <h2>I care about what users see, how they move, and whether the structure makes sense.</h2>
+              <h2>Curious about people. Thoughtful about software.</h2>
             </div>
             <div className="about-copy reveal">
               <p>
-                I completed my studies in Information Architecture at Malmö University, where frontend development, UX, content structure, and technology meet. That perspective helps me design beyond decoration.
+                I hold a BSc in Computer and Information Science from Malmö University, with a focus on software development, UX/UI, and information architecture. I connect how a product is organized with how it works.
               </p>
               <p>
-                My work moves from wireframes and user flows into responsive React components, API integrations, and database-backed features. I enjoy building things that solve real problems without making the experience feel complicated.
+                I enjoy working across design and development: understanding a problem, organizing the information, and building an interface that makes sense. My internship taught me to work with stakeholders, and my thesis strengthened how I evaluate ideas through research. I’m ready to bring that mix to my next team.
               </p>
               <a className="text-link" href="#experience">More about my journey <Icon name="arrow" /></a>
             </div>
             <div className="about-facts reveal">
-              <article><strong>03+</strong><span>Featured projects</span></article>
+              <article><strong>{String(projects.length).padStart(2, '0')}</strong><span>Featured projects</span></article>
               <article><strong>01</strong><span>Professional internship</span></article>
-              <article><strong>03</strong><span>Languages spoken</span></article>
+              <article><strong>BSc</strong><span>Computer and Information Science</span></article>
             </div>
           </div>
         </section>
@@ -358,8 +338,8 @@ function App() {
           <div className="section-wrap">
             <SectionHeading
               eyebrow="Skills & tools"
-              title="A balanced toolkit for thoughtful frontend work."
-              copy="My strongest work sits between implementation and understanding—building the interface while keeping the user journey and information structure in view."
+              title="From the interface to the data behind it."
+              copy="I combine software development with user-centered design, information structure, and evidence from research."
               light
             />
 
@@ -367,8 +347,8 @@ function App() {
               <div className="skills-list reveal">
                 {skills.map((skill) => (
                   <div className="skill-row" key={skill.name}>
-                    <div><span>{skill.name}</span><strong>{skill.level}%</strong></div>
-                    <div className="skill-track"><i style={{ '--level': `${skill.level}%` }} /></div>
+                    <h3>{skill.name}</h3>
+                    <p>{skill.detail}</p>
                   </div>
                 ))}
               </div>
@@ -380,7 +360,7 @@ function App() {
                 </div>
                 <div className="toolbox-note">
                   <strong>Always learning.</strong>
-                  <p>I’m currently deepening my React patterns, accessibility, and full-stack product workflow.</p>
+                  <p>I enjoy connecting design decisions with implementation, learning new tools, and making complex information easier to use.</p>
                 </div>
               </aside>
             </div>
@@ -391,7 +371,7 @@ function App() {
           <div className="section-wrap">
             <SectionHeading
               eyebrow="What I do"
-              title="From a clear idea to a working digital product."
+              title="What I bring to a development team."
               copy="I can contribute across the interface, the user journey, and the technical foundations behind it."
             />
 
@@ -415,18 +395,31 @@ function App() {
           <div className="section-wrap">
             <SectionHeading
               eyebrow="Selected work"
-              title="Projects designed around real use, not just presentation."
-              copy="Each project helped me connect frontend decisions with usability, data, and the purpose of the product."
+              title="A selection of my work."
+              copy="Projects where I’ve put development, design, and problem-solving into practice."
               light
             />
 
             <div className="project-list">
               {projects.map((project) => (
-                <article className="project-card reveal" key={project.number}>
-                  <a className="project-image" href={project.links[0].href} target="_blank" rel="noreferrer">
-                    <img src={project.image} alt={project.alt} />
-                    <span>View project <Icon name="arrow" /></span>
-                  </a>
+                <article className="project-card reveal" id={`project-${project.title.toLowerCase().replaceAll(' ', '-')}`} key={project.number}>
+                  {project.image ? (
+                    <a className="project-image" aria-label={`Explore ${project.title}`} href={project.links[0].href} target="_blank" rel="noreferrer">
+                      <img src={project.image} alt={project.alt} loading="lazy" />
+                      <span>View project <Icon name="arrow" /></span>
+                    </a>
+                  ) : (
+                    <div className="project-overview" aria-label="BlueSky project overview">
+                      <div className="overview-topline"><p>Project overview</p><Icon name="code" /></div>
+                      <strong className="overview-title">BlueSky<span>.</span></strong>
+                      <p className="overview-subtitle">Content publishing, backed by Java.</p>
+                      <div className="overview-capabilities">
+                        <div><span>01</span><p>Content publishing</p></div>
+                        <div><span>02</span><p>Input handling & validation</p></div>
+                        <div><span>03</span><p>Java backend</p></div>
+                      </div>
+                    </div>
+                  )}
                   <div className="project-content">
                     <div className="project-meta"><span>{project.number}</span><p>{project.category}</p></div>
                     <h3>{project.title}</h3>
@@ -475,7 +468,7 @@ function App() {
             <div className="contact-copy reveal">
               <p className="eyebrow light"><span />Let’s work together</p>
               <h2>Have an opportunity or an idea worth building?</h2>
-              <p>I’m open to junior frontend roles, internships, and product teams where clarity, collaboration, and learning matter.</p>
+              <p>I’m looking for junior software development and frontend roles where I can contribute across React interfaces, APIs, and UX. Let’s talk about what your team is building.</p>
               <a className="button button-light" href="#contact-form">Start a conversation <Icon name="arrow" /></a>
 
               <div className="contact-links">
@@ -494,7 +487,18 @@ function App() {
               </div>
             </div>
 
-            <form className="contact-form reveal" id="contact-form" onSubmit={handleContactSubmit}>
+            <form
+              className="contact-form reveal"
+              id="contact-form"
+              action={formEndpoint}
+              method="POST"
+              acceptCharset="UTF-8"
+              onSubmit={handleContactSubmit}
+              onInput={(event) => event.target.setCustomValidity?.('')}
+            >
+              <input type="hidden" name="_subject" value="New portfolio inquiry" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="true" />
               <div className="form-heading">
                 <span>Send a message</span>
                 <h3>Tell me what you have in mind.</h3>
@@ -503,39 +507,34 @@ function App() {
               <div className="form-grid">
                 <label>
                   <span>Your name</span>
-                  <input type="text" name="name" placeholder="Jane Smith" autoComplete="name" required />
+                  <input type="text" name="name" autoComplete="name" maxLength={100} required />
                 </label>
                 <label>
                   <span>Email address</span>
-                  <input type="email" name="email" placeholder="jane@company.com" autoComplete="email" required />
+                  <input type="email" name="email" autoComplete="email" maxLength={254} required />
                 </label>
               </div>
 
               <label>
                 <span>Subject</span>
-                <input type="text" name="subject" placeholder="Frontend opportunity" required />
+                <input type="text" name="subject" maxLength={160} required />
               </label>
 
               <label>
                 <span>Your message</span>
-                <textarea name="message" rows="6" placeholder="Hi Amjad, I’d like to talk about…" required />
+                <textarea name="message" rows="6" maxLength={5000} minLength={10} required />
               </label>
 
               <input className="form-honeypot" type="text" name="_honey" tabIndex="-1" autoComplete="off" aria-hidden="true" />
 
               <div className="form-footer">
-                <p>Your details are only used to reply to your message.</p>
-                <button className="button form-submit" type="submit" disabled={formStatus.state === 'sending'}>
-                  {formStatus.state === 'sending' ? 'Sending…' : 'Send message'}
+                <p>Sent through FormSubmit. Complete the verification step to send your message.</p>
+                <button className="button form-submit" type="submit">
+                  Continue to verification
                   <Icon name="arrow" />
                 </button>
               </div>
 
-              {formStatus.message ? (
-                <p className={`form-status ${formStatus.state}`} role="status" aria-live="polite">
-                  {formStatus.message}
-                </p>
-              ) : null}
             </form>
           </div>
         </section>
